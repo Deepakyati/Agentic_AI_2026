@@ -9,11 +9,12 @@ load_dotenv()
 prompt = PromptTemplate.from_template("{question}")
 
 model = ChatOpenAI()
+
 parser = StrOutputParser()
 
 # Chain: prompt → model → parser
 chain = prompt | model | parser
 
 # Run it
-result = chain.invoke({"question": "What is the capital of Peru?"})
+result = chain.invoke({"question": "What is the capital of India?"})
 print(result)
