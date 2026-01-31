@@ -1,5 +1,3 @@
-Here is a professional and comprehensive README.md file for your project. This is designed to look impressive on GitHub and help recruiters understand your technical depth at a glance.
-
 🤖 Hybrid-Agentic Research Orchestrator (HARO)
 HARO is a sophisticated multi-agent research tool built with LangGraph, Python, and Streamlit. It leverages a "Cognitive Architecture" to intelligently route queries between local document analysis (RAG), real-time web research, and conversational chat.
 
@@ -50,5 +48,6 @@ Router Node: Analyzes the query. If you say "Thanks," it routes to the Chat Agen
 PDF Agent: Performs a similarity search in the FAISS vector store to find relevant context from the research paper.
 
 Web Agent: Simultaneously (or sequentially) gathers live data to provide a modern perspective.
+
 
 State Management: A global TypedDict manages the flow of information between agents, ensuring no context is lost.
