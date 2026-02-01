@@ -2,44 +2,47 @@ import streamlit as st
 from langgraph_backend import research_app
 
 # UI Config
-st.set_page_config(page_title="Agentic Research Tool", layout="wide")
-st.title("🤖 Specialized Research Agents")
+st.set_page_config(page_title="Agentic Document & Web Synthesizer", layout="wide")
+st.title("🤖 Agentic_Document_Web_Synthesizer")
 st.markdown("---")
 
-# Sidebar for Status
+# Sidebar
 with st.sidebar:
     st.header("Project Info")
     st.write("📄 **Internal Source:** attention.pdf")
-    st.write("🌐 **External Source:** DuckDuckGo Web Search")
-    st.write("🧠 **Model:** Groq / Gemini 1.5 Flash")
-
-# Chat Interface
-if "messages" not in st.session_state:
-    st.session_state.messages = []
+    st.write("🌐 **External Source:** DuckDuckGo Web")
+    st.write("🧠 **Logic:** Multi-Agent Synthesis")
 
 # Input field
 user_query = st.chat_input("Ask about the paper or a general AI topic...")
 
 if user_query:
-    # Add user message to UI
     st.chat_message("user").write(user_query)
     
-    with st.spinner("Agents are collaborating..."):
+    with st.spinner("Agents are collaborating to synthesize findings..."):
         # Invoke the LangGraph Backend
-        inputs = {"question": user_query, "pdf_summary": "", "web_summary": ""}
+        inputs = {
+            "question": user_query, 
+            "pdf_summary": "", 
+            "web_summary": "",
+            "final_report": ""
+        }
         result = research_app.invoke(inputs)
         
-        # Display Results in a clear, comparative layout
-        st.subheader("Final Research Report")
+        # 1. Show the Master Synthesized Report at the Top
+        st.header("✨ Final Synthesized Report")
+        st.success(result["final_report"])
+        
+        st.markdown("---")
+        
+        # 2. Show the Source Breakdowns in Columns
+        st.subheader("Source Details")
         col1, col2 = st.columns(2)
         
         with col1:
-            st.info("### 📄 PDF Summary")
+            st.info("### 📄 PDF Agent Findings")
             st.write(result["pdf_summary"])
             
         with col2:
-            st.success("### 🌐 Web Summary")
+            st.warning("### 🌐 Web Agent Findings")
             st.write(result["web_summary"])
-
-        # Optional: Save to history
-        st.session_state.messages.append({"role": "assistant", "content": result})
