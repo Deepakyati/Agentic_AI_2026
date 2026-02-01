@@ -1,53 +1,62 @@
-🤖 Hybrid-Agentic Research Orchestrator (HARO)
-HARO is a sophisticated multi-agent research tool built with LangGraph, Python, and Streamlit. It leverages a "Cognitive Architecture" to intelligently route queries between local document analysis (RAG), real-time web research, and conversational chat.
+Agentic_Document_Web_Synthesizer 🤖📄🌐
+A Multi-Agent Orchestration System for Hybrid Intelligence.
+
+This project demonstrates a production-grade Agentic AI Workflow built with LangGraph. It bridges the gap between static internal documents (PDFs) and the dynamic external web by coordinating three specialized agents to produce a single, synthesized research report.
 
 🌟 Key Features
-Intent-Based Routing: Uses an LLM supervisor to classify user queries and trigger only the necessary agents, optimizing performance and token usage.
+Stateful Multi-Agent Orchestration: Uses a Directed Acyclic Graph (DAG) to manage shared state across multiple LLM agents.
 
-Agentic RAG: Implements a full RAG pipeline (Ingestion -> Chunking -> Embedding -> Retrieval) to analyze the "Attention is All You Need" paper.
+Hybrid RAG Architecture: Combines FAISS vector search with Google Gemini Embeddings for high-precision document retrieval.
 
-Live Web Intelligence: Independent agents collaborate to fetch and summarize real-time data from the web using DuckDuckGo.
+Real-time Web Integration: Leverages DuckDuckGo Search and Groq (Llama 3.3) for ultra-low latency external data fetching.
 
-High-Performance Inference: Powered by Groq (Llama 3.3) for blazing-fast reasoning and Google Gemini for high-dimensional embeddings.
+Conflict Resolution & Synthesis: A dedicated Synthesizer Agent cross-references sources to identify contradictions and provide a unified conclusion.
 
-Human-Centric UI: A clean, responsive Streamlit interface that displays comparative research reports from multiple sources.
+Streamlit UI: A professional dashboard featuring side-by-side agent findings and a master executive summary.
+
+🏗️ System Architecture
+The project follows a sequential agentic flow:
+
+START: The user query enters the AgentState.
+
+PDF Agent: Performs RAG to extract internal context from attention.pdf.
+
+Web Agent: Queries the live web for the latest updates and external benchmarks.
+
+Synthesizer Agent: Analyzes outputs from both agents to resolve discrepancies and generate the final report.
+
+END: The synthesized state is returned to the Streamlit UI.
 
 🛠️ Tech Stack
-Frameworks: LangGraph (Orchestration), LangChain (Tools), Streamlit (Frontend)
+Framework: LangGraph, LangChain
 
-LLMs: Groq Llama 3.3-70b (Logic), Google Gemini 1.5 Flash (Embeddings)
+LLMs: Groq (Llama 3.3-70B), Gemini 1.5 Flash
 
-Vector Database: FAISS (Local Similarity Search)
+Vector DB: FAISS
 
-Data Processing: PyPDF2, RecursiveCharacterTextSplitter
+Frontend: Streamlit
 
-Search API: DuckDuckGo Search
+Environment: Python 3.10+, PowerShell
 
-📁 Project Structure
-Plaintext
-├── attention.pdf          # Target research document
-├── .env                  # API Keys (Excluded from Git)
-├── langgraph_backend.py   # State machine, agents, and RAG logic
-└── streamlit_app.py      # User interface and chatbot flow
 🚀 Getting Started
-1. Installation
+1. Clone the Repository
 Bash
-pip install langgraph streamlit langchain-groq langchain-google-genai langchain-community faiss-cpu PyPDF2 duckduckgo-search python-dotenv
-2. Set Up Environment Variables
+git clone https://github.com/your-username/Agentic_Document_Web_Synthesizer.git
+cd Agentic_Document_Web_Synthesizer
+2. Set Up Environment
 Create a .env file in the root directory:
 
 Plaintext
-GOOGLE_API_KEY=your_gemini_key
+GOOGLE_API_KEY=your_google_key
 GROQ_API_KEY=your_groq_key
-3. Run the Application
-Bash
+3. Install Dependencies
+PowerShell
+pip install -r requirements.txt
+4. Run the Application
+PowerShell
 streamlit run streamlit_app.py
-🧠 Cognitive Architecture
-Router Node: Analyzes the query. If you say "Thanks," it routes to the Chat Agent. If you ask about Transformers, it routes to the PDF Agent.
+📝 Interview Talk Tracks
+Why LangGraph? "I used LangGraph to move beyond simple linear chains. It allows for a stateful 'shared brain' where agents can build upon each other's work."
 
-PDF Agent: Performs a similarity search in the FAISS vector store to find relevant context from the research paper.
+The Synthesizer Node: "This is the system's 'Senior Manager.' It doesn't just display data; it performs reasoning to ensure internal and external sources are aligned."
 
-Web Agent: Simultaneously (or sequentially) gathers live data to provide a modern perspective.
-
-
-State Management: A global TypedDict manages the flow of information between agents, ensuring no context is lost.
