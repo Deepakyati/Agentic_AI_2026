@@ -1,0 +1,19 @@
+# --- Frontend ---
+streamlit>=1.31.0
+
+# --- Agentic Framework (LangGraph) ---
+langgraph>=0.1.0
+langchain-core>=0.1.45
+langchain-openai>=0.1.0
+
+# --- State & Memory ---
+# MemorySaver is built into langgraph, but we need these for tracing
+langsmith>=0.1.0
+
+# --- Tools & Utilities ---
+duckduckgo-search>=5.3.0
+python-dotenv>=1.0.1
+
+# --- Machine Learning Backend ---
+# Included because your code handles Torch DLL paths for Windows
+torch>=2.0.0
