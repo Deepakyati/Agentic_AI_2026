@@ -1,0 +1,21 @@
+# --- Frontend & UI ---
+streamlit>=1.31.0
+
+# --- Agentic Orchestration & Graph ---
+langgraph>=0.0.26
+langchain>=0.1.0
+langchain-openai>=0.1.0
+langchain-community>=0.0.38
+langchain-text-splitters>=0.0.1
+
+# --- Vector Database & Embeddings ---
+faiss-cpu>=1.7.4
+openai>=1.10.0
+pypdf>=4.0.0
+
+# --- Search & Intelligence ---
+duckduckgo-search>=6.1.7
+
+# --- Environment & Utils ---
+python-dotenv>=1.0.1
+tiktoken>=0.5.2
