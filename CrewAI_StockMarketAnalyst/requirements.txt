@@ -1,0 +1,19 @@
+# --- Frontend Framework ---
+streamlit>=1.31.0
+
+# --- Multi-Agent Orchestration ---
+crewai>=0.28.0
+crewai_tools>=0.1.0
+
+# --- LLM Connectors ---
+langchain-google-genai>=1.0.0
+langchain-groq>=0.1.0
+langchain-openai>=0.1.0
+
+# --- Search & Tools ---
+langchain-community>=0.0.38
+duckduckgo-search>=6.0.0
+
+# --- Environment & Utils ---
+python-dotenv>=1.0.1
+pydantic>=2.0.0
