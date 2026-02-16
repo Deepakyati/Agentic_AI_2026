@@ -23,7 +23,7 @@ Framework: LangGraph (Stateful Agents)
 LLM: OpenAI GPT-4o-mini / Gemini 1.5 Pro
 UI: Streamlit
 Database/Memory: SQLite (for thread persistence)
-Tools: DuckDuckGo Search API, Pydantic (Data Validation)
+Tools: DuckDuckGo Search API, Pydantic
 
 
 Enter a topic (e.g., "NVIDIA Earnings").
@@ -35,3 +35,4 @@ Impact & Engineering Highlights
 DLL Initialization Fix: Managed complex Windows-specific WinError 1114 issues by implementing DLL pre-loading and environment pinning.
 State Persistence: Used MemorySaver to allow the agent to "pause" its brain and wait for human input without losing context.
 Production Monitoring: Used LangSmith to reduce token costs by 15% through prompt optimization and tracing.
+
